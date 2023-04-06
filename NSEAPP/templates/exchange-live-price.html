@@ -682,6 +682,214 @@
           }
             );
             </script>
+            <div class="market-trade mt15">
+              
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="pills-trade-limit" role="tabpanel">
+                  <div class="d-flex justify-content-between">
+                    <div class="market-trade-buy">
+                      <div class="input-group">
+                        <button class="btn buy mt-1">Top Gainers</button>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Symbol</th>
+                              <th>Last Price</th>
+                              <th>Change</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                             {% for t in top_gainer %}
+                              
+                            
+                              
+                            <tr>
+                              <td id="symbol_id"><i class="icon ion-md-star" ></i> {{i.symbol}}</td>
+                              <td id="price_id">{{i.lastPrice}}</td>
+                              <td class="red" id="pChange">{{i.pChange}}%</td>
+                            </tr>
+          
+                            {% endfor %}
+                          
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                     
+                      <!-- <button class="btn buy">Buy</button> -->
+                    </div>
+                    <div class="market-trade-sell">
+                      <div class="input-group">
+                        <button class="btn sell mt-1">Top Losser</button>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="pills-market" role="tabpanel">
+                  <div class="d-flex justify-content-between">
+                    <div class="market-trade-buy">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                          <span class="input-group-text">BTC</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <ul class="market-trade-list">
+                        <li><a href="#!">25%</a></li>
+                        <li><a href="#!">50%</a></li>
+                        <li><a href="#!">75%</a></li>
+                        <li><a href="#!">100%</a></li>
+                      </ul>
+                      <p>Available: <span>0 BTC = 0 USD</span></p>
+                      <p>Volume: <span>0 BTC = 0 USD</span></p>
+                      <p>Margin: <span>0 BTC = 0 USD</span></p>
+                      <p>Fee: <span>0 BTC = 0 USD</span></p>
+                      <button class="btn buy">Buy</button>
+                    </div>
+                    <div class="market-trade-sell">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                          <span class="input-group-text">BTC</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <ul class="market-trade-list">
+                        <li><a href="#!">25%</a></li>
+                        <li><a href="#!">50%</a></li>
+                        <li><a href="#!">75%</a></li>
+                        <li><a href="#!">100%</a></li>
+                      </ul>
+                      <p>Available: <span>0 BTC = 0 USD</span></p>
+                      <p>Volume: <span>0 BTC = 0 USD</span></p>
+                      <p>Margin: <span>0 BTC = 0 USD</span></p>
+                      <p>Fee: <span>0 BTC = 0 USD</span></p>
+                      <button class="btn sell">Sell</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="pills-stop-limit" role="tabpanel">
+                  <div class="d-flex justify-content-between">
+                    <div class="market-trade-buy">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                          <span class="input-group-text">BTC</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <ul class="market-trade-list">
+                        <li><a href="#!">25%</a></li>
+                        <li><a href="#!">50%</a></li>
+                        <li><a href="#!">75%</a></li>
+                        <li><a href="#!">100%</a></li>
+                      </ul>
+                      <p>Available: <span>0 BTC = 0 USD</span></p>
+                      <p>Volume: <span>0 BTC = 0 USD</span></p>
+                      <p>Margin: <span>0 BTC = 0 USD</span></p>
+                      <p>Fee: <span>0 BTC = 0 USD</span></p>
+                      <button class="btn buy">Buy</button>
+                    </div>
+                    <div class="market-trade-sell">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                          <span class="input-group-text">BTC</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <ul class="market-trade-list">
+                        <li><a href="#!">25%</a></li>
+                        <li><a href="#!">50%</a></li>
+                        <li><a href="#!">75%</a></li>
+                        <li><a href="#!">100%</a></li>
+                      </ul>
+                      <p>Available: <span>0 BTC = 0 USD</span></p>
+                      <p>Volume: <span>0 BTC = 0 USD</span></p>
+                      <p>Margin: <span>0 BTC = 0 USD</span></p>
+                      <p>Fee: <span>0 BTC = 0 USD</span></p>
+                      <button class="btn sell">Sell</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="pills-stop-market" role="tabpanel">
+                  <div class="d-flex justify-content-between">
+                    <div class="market-trade-buy">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                          <span class="input-group-text">BTC</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <ul class="market-trade-list">
+                        <li><a href="#!">25%</a></li>
+                        <li><a href="#!">50%</a></li>
+                        <li><a href="#!">75%</a></li>
+                        <li><a href="#!">100%</a></li>
+                      </ul>
+                      <p>Available: <span>0 BTC = 0 USD</span></p>
+                      <p>Volume: <span>0 BTC = 0 USD</span></p>
+                      <p>Margin: <span>0 BTC = 0 USD</span></p>
+                      <p>Fee: <span>0 BTC = 0 USD</span></p>
+                      <button class="btn buy">Buy</button>
+                    </div>
+                    <div class="market-trade-sell">
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Price">
+                        <div class="input-group-append">
+                          <span class="input-group-text">BTC</span>
+                        </div>
+                      </div>
+                      <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Amount">
+                        <div class="input-group-append">
+                          <span class="input-group-text">ETH</span>
+                        </div>
+                      </div>
+                      <ul class="market-trade-list">
+                        <li><a href="#!">25%</a></li>
+                        <li><a href="#!">50%</a></li>
+                        <li><a href="#!">75%</a></li>
+                        <li><a href="#!">100%</a></li>
+                      </ul>
+                      <p>Available: <span>0 BTC = 0 USD</span></p>
+                      <p>Volume: <span>0 BTC = 0 USD</span></p>
+                      <p>Margin: <span>0 BTC = 0 USD</span></p>
+                      <p>Fee: <span>0 BTC = 0 USD</span></p>
+                      <button class="btn sell">Sell</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- TradingView Widget END -->
         </div>
@@ -716,332 +924,7 @@
 </div> -->
 <!-- TradingView Widget END -->
       </div>
-      <div class="col-md-6">
-        <div class="market-history market-order mt15">
-          <ul class="nav nav-pills" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="pill" href="#open-orders" role="tab" aria-selected="true">Open
-                Orders</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="pill" href="#stop-orders" role="tab" aria-selected="false">Closed
-                Orders</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="pill" href="#order-history" role="tab" aria-selected="false">Order
-                history</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="pill" href="#trade-history" role="tab" aria-selected="false">Balance</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade show active" id="open-orders" role="tabpanel">
-              <ul class="d-flex justify-content-between market-order-item">
-                <li>Time</li>
-                <li>All pairs</li>
-                <li>All Types</li>
-                <li>Buy/Sell</li>
-                <li>Price</li>
-                <li>Amount</li>
-                <li>Executed</li>
-                <li>Unexecuted</li>
-              </ul>
-              <span class="no-data">
-                <i class="icon ion-md-document"></i>
-                No data
-              </span>
-            </div>
-            <div class="tab-pane fade" id="stop-orders" role="tabpanel">
-              <ul class="d-flex justify-content-between market-order-item">
-                <li>Time</li>
-                <li>All pairs</li>
-                <li>All Types</li>
-                <li>Buy/Sell</li>
-                <li>Price</li>
-                <li>Amount</li>
-                <li>Executed</li>
-                <li>Unexecuted</li>
-              </ul>
-              <span class="no-data">
-                <i class="icon ion-md-document"></i>
-                No data
-              </span>
-            </div>
-            <div class="tab-pane fade" id="order-history" role="tabpanel">
-              <ul class="d-flex justify-content-between market-order-item">
-                <li>Time</li>
-                <li>All pairs</li>
-                <li>All Types</li>
-                <li>Buy/Sell</li>
-                <li>Price</li>
-                <li>Amount</li>
-                <li>Executed</li>
-                <li>Unexecuted</li>
-              </ul>
-              <span class="no-data">
-                <i class="icon ion-md-document"></i>
-                No data
-              </span>
-            </div>
-            <div class="tab-pane fade" id="trade-history" role="tabpanel">
-              <ul class="d-flex justify-content-between market-order-item">
-                <li>Time</li>
-                <li>All pairs</li>
-                <li>All Types</li>
-                <li>Buy/Sell</li>
-                <li>Price</li>
-                <li>Amount</li>
-                <li>Executed</li>
-                <li>Unexecuted</li>
-              </ul>
-              <span class="no-data">
-                <i class="icon ion-md-document"></i>
-                No data
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="market-trade mt15">
-          <ul class="nav nav-pills" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="pill" href="#pills-trade-limit" role="tab"
-                aria-selected="true">Limit</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="pill" href="#pills-market" role="tab" aria-selected="false">Market</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="pill" href="#pills-stop-limit" role="tab" aria-selected="false">Stop
-                Limit</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="pill" href="#pills-stop-market" role="tab" aria-selected="false">Stop
-                Market</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade show active" id="pills-trade-limit" role="tabpanel">
-              <div class="d-flex justify-content-between">
-                <div class="market-trade-buy">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn buy">Buy</button>
-                </div>
-                <div class="market-trade-sell">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn sell">Sell</button>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-market" role="tabpanel">
-              <div class="d-flex justify-content-between">
-                <div class="market-trade-buy">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn buy">Buy</button>
-                </div>
-                <div class="market-trade-sell">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn sell">Sell</button>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-stop-limit" role="tabpanel">
-              <div class="d-flex justify-content-between">
-                <div class="market-trade-buy">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn buy">Buy</button>
-                </div>
-                <div class="market-trade-sell">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn sell">Sell</button>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-stop-market" role="tabpanel">
-              <div class="d-flex justify-content-between">
-                <div class="market-trade-buy">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn buy">Buy</button>
-                </div>
-                <div class="market-trade-sell">
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Price">
-                    <div class="input-group-append">
-                      <span class="input-group-text">BTC</span>
-                    </div>
-                  </div>
-                  <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Amount">
-                    <div class="input-group-append">
-                      <span class="input-group-text">ETH</span>
-                    </div>
-                  </div>
-                  <ul class="market-trade-list">
-                    <li><a href="#!">25%</a></li>
-                    <li><a href="#!">50%</a></li>
-                    <li><a href="#!">75%</a></li>
-                    <li><a href="#!">100%</a></li>
-                  </ul>
-                  <p>Available: <span>0 BTC = 0 USD</span></p>
-                  <p>Volume: <span>0 BTC = 0 USD</span></p>
-                  <p>Margin: <span>0 BTC = 0 USD</span></p>
-                  <p>Fee: <span>0 BTC = 0 USD</span></p>
-                  <button class="btn sell">Sell</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 

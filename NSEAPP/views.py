@@ -73,6 +73,8 @@ def marketview(request):
             continue    
         stock_data.append(data)
         print(stock_data)   
-    context = {'stock_data': stock_data}
+    top_gainer=nse_get_top_gainers()
+    print(top_gainer)
+    context = {'stock_data': stock_data,'top_gainer':top_gainer}
     return render(request, 'exchange-live-price.html',context)
 
