@@ -22,7 +22,9 @@ urlpatterns = [
     path('register/',views.registerview),
     path('login/',views.login_view,name='login_view'),
     path('logout/',views.userlogout,name='logout'),
-    path('marketview/',views.marketview,name='marketview')
+    path('marketview/',views.marketview,name='marketview'),
+    path('marketindex/',views.marketindex,name='marketindex'),
+    path('marketlight/',views.marketlight,name='marketlight')
    
 
 ]

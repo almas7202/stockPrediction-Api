@@ -1,4 +1,6 @@
 # from django.shortcuts import render
+import json
+import pandas as pd
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 # from nsetools import Nse
@@ -72,9 +74,20 @@ def marketview(request):
             print(f"Error fetching live data for symbol {symbol}: {e}")
             continue    
         stock_data.append(data)
-        print(stock_data)   
-    top_gainer=nse_get_top_gainers()
-    print(top_gainer)
-    context = {'stock_data': stock_data,'top_gainer':top_gainer}
+    print(stock_data) 
+    print("Top Gainers")
+    responsedata = nse_get_top_gainers()
+    # parsing the DataFrame in json format.
+    json_records = responsedata.reset_index().to_json(orient ='records')
+    topgainersData = json.loads(json_records)
+    context = {'stock_data': stock_data,'top_gainers_data': topgainersData}
     return render(request, 'exchange-live-price.html',context)
 
+def marketindex(request):
+    index=nse_index()
+    print(index)
+    context={'index':index}
+    return render(request, 'market-index-light.html',context)
+
+def marketlight(request):
+    return render(request, 'markets-light.html')
