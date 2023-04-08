@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from crypo.netlify.app/landing-page-light.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 06:56:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  {% block title %}
+    
+  {% endblock title %}
+
+    
+  <link rel="icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+  <header class="light-bb">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="exchange-light.html"><img src="{% static 'assets/img/logo-dark.svg' %}" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerMenu"
+        aria-controls="headerMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="icon ion-md-menu"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="headerMenu">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Landing Page
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="landing-page-light.html">Landing One</a>
+              <a class="dropdown-item" href="landing-page-light-two.html">Landing Two</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Exchange
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/marketview/">NSE Live Price</a>
+              <a class="dropdown-item" href="/marketindex/">NSE Market Index</a>
+              <a class="dropdown-item" href="exchange-light-ticker.html">Exchange Ticker</a>
+              <a class="dropdown-item" href="exchange-light-fluid.html">Exchange Fluid</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Markets
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="markets-light.html">Markets</a>
+              <a class="dropdown-item" href="/marketlight/">NSE index</a>
+              <a class="dropdown-item" href="market-capital-bar-light.html">Markets Bar</a>
+              <a class="dropdown-item" href="market-overview-light.html">Market Overview</a>
+              <a class="dropdown-item" href="market-screener-light.html">Market Screener</a>
+              <a class="dropdown-item" href="market-crypto-light.html">Market Crypto</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Dashboard
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="settings-profile-light.html">Profile</a>
+              <a class="dropdown-item" href="settings-wallet-light.html">Wallet</a>
+              <a class="dropdown-item" href="settings-light.html">Settings</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Others
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="technical-analysis-light.html">Technical Analysis</a>
+              <a class="dropdown-item" href="cross-rates-light.html">Cross Rates</a>
+              <a class="dropdown-item" href="symbol-info-light.html">Symbol Info</a>
+              <a class="dropdown-item" href="heat-map-light.html">Heat Map</a>
+              {%  if request.user.is_authenticated  %}
+              <a class="dropdown-item" href="/logout/">logout</a>
+              {% else %}
+              
+              <a class="dropdown-item" href="/login/">Sign in</a>
+              <a class="dropdown-item" href="/register/">Sign up</a>
+
+              {% endif %}
+
+              
+            </div>
+          </li>
+        </ul>
+        
+        {%  if request.user.is_authenticated  %}
+        
+        <ul class="navbar-nav ml-auto">
+          Welcome {{request.user}} 
+        </ul>
+
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+          <a href="/login/" class="btn-1">Sign In</a>
+          <a href="/register/" class="btn-2">Get Started</a>
+        </ul>
+          
+        {% endif %}
+    
+      
+      </div>
+    </nav>
+  </header>
+
+  
+  {% block body %}
+    
+  {% endblock body %}
+    
+
+
+  <footer class="landing-footer-two">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static 'assets/img/logo-dark.svg' %}" alt="">
+          <p>Crypo is the most advanced UI kit for making the Blockchain platform. This kit comes with 4 different
+            exchange page, market, wallet and many more</p>
+          <ul class="social-icon">
+            <li><a href="#"><i class="icon ion-logo-facebook"></i></a></li>
+            <li><a href="#"><i class="icon ion-logo-twitter"></i></a></li>
+            <li><a href="#"><i class="icon ion-logo-linkedin"></i></a></li>
+            <li><a href="#"><i class="icon ion-logo-pinterest"></i></a></li>
+            <li><a href="#"><i class="icon ion-logo-github"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Affiliates</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Legal & privacy</a></li>
+            <li><a href="#">Cookie policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h3>Individuals</h3>
+          <ul>
+            <li><a href="#">Buy & sell</a></li>
+            <li><a href="#">Earn free crypto</a></li>
+            <li><a href="#">Wallet</a></li>
+            <li><a href="#">Card</a></li>
+            <li><a href="#">Payment methods</a></li>
+            <li><a href="#">Account access</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Help center</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Create account</a></li>
+            <li><a href="#">ID verification</a></li>
+            <li><a href="#">Account information</a></li>
+            <li><a href="#">Supported crypto</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h3>Learn</h3>
+          <ul>
+            <li><a href="#">Browse crypto prices</a></li>
+            <li><a href="#">Crypto basics</a></li>
+            <li><a href="#">Tips & tutorials</a></li>
+            <li><a href="#">Market updates</a></li>
+            <li><a href="#">How to send crypto</a></li>
+            <li><a href="#">What is a blockchain?</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'assets/js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/amcharts-core.min.js' %}"></script>
+  <script src="{% static 'assets/js/amcharts.min.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+
+
+<!-- Mi rrored from crypo.netlify.app/landing-page-light.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Mar 2023 06:57:46 GMT -->
+</html>
