@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 # from nsetools import Nse
 from nsepython import *
-from .models import *
 
 import random
 from django.http import JsonResponse
@@ -96,10 +95,3 @@ def marketlight(request):
     indexdata = json.loads(json_records)[:50]
     context={'indexdata':indexdata}
     return render(request, 'markets-light.html',context)
-
-def stock_fetch(request):
-    symbol=fnolist()
-    for data in symbol:
-        stock=Stock(symbol=data)
-        stock.save()
-    return redirect('/marketview/')
