@@ -95,3 +95,7 @@ def marketlight(request):
     indexdata = json.loads(json_records)[:50]
     context={'indexdata':indexdata}
     return render(request, 'markets-light.html',context)
+
+
+
+
