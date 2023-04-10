@@ -23,8 +23,7 @@ urlpatterns = [
     path('login/',views.login_view,name='login_view'),
     path('logout/',views.userlogout,name='logout'),
     path('marketview/',views.marketview,name='marketview'),
-    path('marketlight/',views.marketlight,name='marketlight'),
-    path('fetch-stock/', views.stock_fetch, name='stock_fetch')
+    path('marketlight/',views.marketlight,name='marketlight')
    
 
 ]
