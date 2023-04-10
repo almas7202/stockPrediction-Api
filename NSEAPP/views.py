@@ -80,14 +80,18 @@ def marketview(request):
     # parsing the DataFrame in json format.
     json_records = responsedata.reset_index().to_json(orient ='records')
     topgainersData = json.loads(json_records)
-    context = {'stock_data': stock_data,'top_gainers_data': topgainersData}
+    print("Top Lossers")
+    toplosser = nse_get_top_losers()
+    # parsing the DataFrame in json format.
+    json_records = toplosser.reset_index().to_json(orient ='records')
+    toplosserData = json.loads(json_records)
+    context = {'stock_data': stock_data,'top_gainers_data': topgainersData,'top_losser_data':toplosserData}
     return render(request, 'exchange-live-price.html',context)
 
-def marketindex(request):
-    index=nse_index()
-    print(index)
-    context={'index':index}
-    return render(request, 'market-index-light.html',context)
 
 def marketlight(request):
-    return render(request, 'markets-light.html')
+    index=nse_index()
+    json_records = index.reset_index().to_json(orient ='records')
+    indexdata = json.loads(json_records)[:50]
+    context={'indexdata':indexdata}
+    return render(request, 'markets-light.html',context)

@@ -700,22 +700,15 @@
                           </thead>
                           <tbody>
                           
-                             {% for t in top_gainers_data %}
+                             {% for gainer in top_gainers_data %}
                             <tr>
-                              <td id="symbol_id">{{t.symbol}}</td>
-                              <td id="price_id">{{t.lastPrice}}</td>
-                              <td class="red" id="pChange">{{t.pChange}}%</td>
+                              <td id="symbol_id">{{gainer.symbol}}</td>
+                              <td id="price_id">{{gainer.lastPrice}}</td>
+                              <td class="red" id="pChange">{{gainer.pChange}}%</td>
                             </tr>
           
                             {% endfor %}
-<!-- 
-                            {% for gainer in top_gainers %}
-                          <tr>
-                            <td>{{ gainer.symbol }}</td>
-                            <td>{{ gainer.lastPrice }}</td>
-                            <td>{{ gainer.pChange }}</td>
-                          </tr>
-                           {% endfor %} -->
+
                           
                             
                           </tbody>
@@ -727,7 +720,29 @@
                     <div class="market-trade-sell">
                       <div class="input-group">
                         <button class="btn sell mt-1">Top Losser</button>
-                    
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Symbol</th>
+                              <th>Last Price</th>
+                              <th>Change</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          
+                             {% for looser in top_losser_data %}
+                            <tr>
+                              <td id="symbol_id">{{looser.symbol}}</td>
+                              <td id="price_id">{{looser.lastPrice}}</td>
+                              <td class="red" id="pChange">{{looser.pChange}}%</td>
+                            </tr>
+          
+                            {% endfor %}
+
+                          
+                            
+                          </tbody>
+                        </table>
                     </div>
                   </div>
                 </div>
