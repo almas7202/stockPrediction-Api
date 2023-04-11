@@ -23,7 +23,9 @@ urlpatterns = [
     path('login/',views.login_view,name='login_view'),
     path('logout/',views.userlogout,name='logout'),
     path('marketview/',views.marketview,name='marketview'),
-    path('marketlight/',views.marketlight,name='marketlight')
+    path('marketlight/',views.marketlight,name='marketlight'),
+    path('fetch-stock/',views.symbol_get,name='symbolget'),
+    path('add_to_watchlist/',views.add_to_watchlist,name='add_to_watchlist')
    
 
 ]
