@@ -18,7 +18,7 @@
       <div class="col-md-12 mb15">
        
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="market-pairs">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -43,6 +43,7 @@
               <table class="table">
                 <thead>
                   <tr>
+                    
                     <th>Pairs</th>
                     <th>Last Price</th>
                     <th>Change</th>
@@ -79,6 +80,7 @@
                     <th>Symbol</th>
                     <th>Last Price</th>
                     <th>Change</th>
+                    <th>Bookmark</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,9 +91,18 @@
                     
                   <tr>
                     <!-- <i class="bi bi-bookmark"></i> -->
-                    <td id="symbol_id"><i class="bi bi-bookmarks" ></i> {{i.symbol}}</td>
+                    
+                    <td id="symbol_id">{{i.symbol}} </td>
                     <td id="price_id">{{i.lastPrice}}</td>
                     <td class="red" id="pChange">{{i.pChange}}%</td>
+                    <td>
+                    <form method="post" action="{% url 'add_to_watchlist' %}">
+                      {% csrf_token %}
+                      <input type="hidden" name="symbol" value="{{ i.symbol }}">
+                      <button type="submit" class="fa-sharp fa-solid fa-bookmark"></button>
+                    </form>
+          
+                    </td>
                   </tr>
 
                   {% endfor %}
@@ -105,7 +116,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <div class="main-chart">
           <!-- TradingView Widget BEGIN -->
           <div class="tradingview-widget-container">

@@ -10,6 +10,7 @@ import random
 from django.http import JsonResponse
 # from myapp.models import *
 from .form import *
+from .models import *
 # Create your views here.
 
 def homeview(request):
@@ -97,5 +98,19 @@ def marketlight(request):
     return render(request, 'markets-light.html',context)
 
 
+def symbol_get(request):
+    symbol=list(fnolist())
+    for data in symbol:
+        ans=Stock(symbol=data)
+        ans.save()
+    return redirect('/marketview/')
+
+
+def add_to_watchlist(request):
+    symbol=request.POST['symbol']
+    stock = Stock.objects.filter(symbol=symbol)
+    ans = stock.first()
+    Watchlist(user=request.user,stock=ans).save()
+    return redirect('/marketview/')
 
 
