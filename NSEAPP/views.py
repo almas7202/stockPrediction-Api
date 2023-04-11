@@ -111,6 +111,23 @@ def add_to_watchlist(request):
     stock = Stock.objects.filter(symbol=symbol)
     ans = stock.first()
     Watchlist(user=request.user,stock=ans).save()
-    return redirect('/marketview/')
+    return redirect('/watchlist/')
 
 
+def Watchlistview(request):
+    watch=[]
+    get_stock=Watchlist.objects.filter(user=request.user)
+    print(get_stock)
+    for i in get_stock:
+        data=nsetools_get_quote(i.stock.symbol)
+        watch.append(data)
+    context={'watch':watch}
+    return render(request, 'watchlist.html',context)
+
+def Removestock(request,symbol):
+    stock = Stock.objects.filter(symbol=symbol)
+    stock_symbol = stock.first()
+    get_symbol=Watchlist.objects.filter(user=request.user,stock=stock_symbol)
+    get_symbol.delete()
+    # messages.success(request, f"{symbol} removed from your watchlist.")
+    return redirect('/watchlist/')

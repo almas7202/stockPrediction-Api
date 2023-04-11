@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    
+{% endblock title %}
+
+
+{% block body %}
+    <div class="container"> 
+    
+        <table class="table table-bordered mt-2">
+
+            <thead>
+              <tr>
+                <th class="h fw-bold">Symbol</th>
+                <th class="h6 fw-bold">CompanyName</th>
+                <th class="h6 fw-bold"> Open</th>
+                <th class="h6 fw-bold">DayHigh</th>
+                <th class="h6 fw-bold"> DayLow</th>
+                <th class="h6 fw-bold">Price</th>
+                <th class="h6 fw-bold">PChange</th>
+                <th class="h6 fw-bold">Change</th>
+                <th class="h6 fw-bold">Previous Close </th>
+                <th class="h6 fw-bold">volume</th>
+                <th class="remove">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+            
+             {% for i in watch %}
+              <tr>
+                <td id="symbol_id">{{i.symbol}}</td>
+                <td id="price_id">{{i.companyName}}</td>
+                <td id="open">{{i.open}}</td>
+                <td id="high">{{i.dayHigh}}</td>
+                <td id="low" >{{i.dayLow}}</td>
+                <td id="price_id">{{i.lastPrice}}</td>
+                <td id="pchange" class="red">{{i.pChange}}%</td>
+                <td id="change" class="red">{{i.change}}</td>
+                <td id="previousclose">{{i.previousClose}}</td>
+                <td id="volume">{{i.totalTradedVolume}}</td>  
+                <td><a  href="{% url 'removestock' i.symbol %}"class="fa-sharp fa-solid fa-trash" ></a></td>
+
+              </tr>
+
+              {% endfor %} 
+
+            
+              
+            </tbody>
+          </table>
+    </div>
+    
+{% endblock body %}
+    
+    
