@@ -25,7 +25,10 @@ urlpatterns = [
     path('marketview/',views.marketview,name='marketview'),
     path('marketlight/',views.marketlight,name='marketlight'),
     path('fetch-stock/',views.symbol_get,name='symbolget'),
-    path('add_to_watchlist/',views.add_to_watchlist,name='add_to_watchlist')
+    path('watchlist/',views.Watchlistview,name='watchlsit'),
+    path('add_to_watchlist/',views.add_to_watchlist,name='add_to_watchlist'),
+    path('removestock/<str:symbol>/', views.Removestock, name='removestock'),
+
    
 
 ]
