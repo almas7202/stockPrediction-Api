@@ -23,6 +23,7 @@
                 <th class="h6 fw-bold">Change</th>
                 <th class="h6 fw-bold">Previous Close </th>
                 <th class="h6 fw-bold">volume</th>
+                <th class="h6 fw-bold">Prediction</th>
                 <th class="remove">Remove</th>
               </tr>
             </thead>
@@ -37,10 +38,11 @@
                 <td id="high">{{i.dayHigh}}</td>
                 <td id="low" >{{i.dayLow}}</td>
                 <td id="price_id">{{i.lastPrice}}</td>
-                <td id="pchange" class="red">{{i.pChange}}%</td>
-                <td id="change" class="red">{{i.change}}</td>
-                <td id="previousclose">{{i.previousClose}}</td>
-                <td id="volume">{{i.totalTradedVolume}}</td>  
+                <td class="{% if i.pChange > 0 %}green{% else %}red{% endif %}">{{ i.pChange }}%</td>
+                <td class="{% if i.change > 0 %}green{% else %}red{% endif %}">{{ i.change }}</td> <td id="previousclose">{{i.previousClose}}</td>
+                <td id="volume">{{i.totalTradedVolume}}</td>    
+                <td>{{i.prediction }}</td>
+                    
                 <td><a  href="{% url 'removestock' i.symbol %}"class="fa-sharp fa-solid fa-trash" ></a></td>
 
               </tr>

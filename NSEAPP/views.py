@@ -5,12 +5,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 # from nsetools import Nse
 from nsepython import *
-
+from django.http import HttpResponse
+from sklearn.linear_model import LinearRegression
 import random
 from django.http import JsonResponse
 # from myapp.models import *
 from .form import *
 from .models import *
+import os
 # Create your views here.
 
 def homeview(request):
@@ -105,13 +107,40 @@ def symbol_get(request):
         ans.save()
     return redirect('/marketview/')
 
+def generate_csv(symbol):
+    # symbol = Stock.objects.filter(symbol=symbol)[1]
+    # start_date = "01-01-2023"
+    # end_date = "10-04-2023"
+    # series = "EQ"
+    # data = nsefetch("https://www.nseindia.com/api/historical/cm/equity?symbol="+symbol+"&series=[%22"+series+"%22]&from="+start_date+"&to="+end_date+"")
+    # data.to_csv(f"{symbol}.csv", index=False)
+    start_date = "01-01-2023"
+    end_date = "10-04-2023"
+    series = "EQ"
+    data_dict = nsefetch("https://www.nseindia.com/api/historical/cm/equity?symbol="+symbol+"&series=[%22"+series+"%22]&from="+start_date+"&to="+end_date+"")
+    data = pd.DataFrame(data_dict['data'])
+    data.to_csv(f"{symbol}.csv", index=False)
+
 
 def add_to_watchlist(request):
+    # symbol=request.POST['symbol']
+    # stock = Stock.objects.filter(symbol=symbol)
+    # ans = stock.first()
+    # Watchlist(user=request.user,stock=ans).save()
+    # generate_csv(stock)
+    # return redirect('/watchlist/')
     symbol=request.POST['symbol']
-    stock = Stock.objects.filter(symbol=symbol)
-    ans = stock.first()
-    Watchlist(user=request.user,stock=ans).save()
-    return redirect('/watchlist/')
+    stock = Stock.objects.filter(symbol=symbol)[:1]
+    if stock:
+        ans = stock[0]
+        generate_csv(ans.symbol)
+        prediction = predict_price(symbol)
+        Watchlist(user=request.user,stock=ans,predicted_price=prediction).save()
+        print(prediction)
+        return redirect('/watchlist/')
+    else:
+        return HttpResponse("Stock not found")
+        
 
 
 def Watchlistview(request):
@@ -119,8 +148,23 @@ def Watchlistview(request):
     get_stock=Watchlist.objects.filter(user=request.user)
     print(get_stock)
     for i in get_stock:
-        data=nsetools_get_quote(i.stock.symbol)
-        watch.append(data)
+        quote_data =nsetools_get_quote(i.stock.symbol)
+        prediction_data =i.predicted_price
+        row_data = {
+            'symbol': quote_data['symbol'],
+            # 'companyName': quote_data['companyName'],
+            'open': quote_data['open'],
+            'dayHigh': quote_data['dayHigh'],
+            'dayLow': quote_data['dayLow'],
+            'lastPrice': quote_data['lastPrice'],
+            'pChange': quote_data['pChange'],
+            'change': quote_data['change'],
+            'previousClose': quote_data['previousClose'],
+            'totalTradedVolume': quote_data['totalTradedVolume'],
+            'prediction': prediction_data
+        }
+        watch.append(row_data)
+        print(watch)
     context={'watch':watch}
     return render(request, 'watchlist.html',context)
 
@@ -131,3 +175,15 @@ def Removestock(request,symbol):
     get_symbol.delete()
     # messages.success(request, f"{symbol} removed from your watchlist.")
     return redirect('/watchlist/')
+
+
+def predict_price(symbol):
+    data = pd.read_csv(f"{symbol}.csv")
+    X = data[['CH_OPENING_PRICE', 'CH_LAST_TRADED_PRICE','CH_TOTAL_TRADES']]
+    y = data['CH_CLOSING_PRICE']
+    model = LinearRegression()
+    model.fit(X, y)
+    last_row = data.tail(1)
+    prediction = model.predict(last_row[['CH_OPENING_PRICE', 'CH_LAST_TRADED_PRICE','CH_TOTAL_TRADES']])
+    return prediction[0]
+
