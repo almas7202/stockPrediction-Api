@@ -28,6 +28,7 @@ urlpatterns = [
     path('watchlist/',views.Watchlistview,name='watchlsit'),
     path('add_to_watchlist/',views.add_to_watchlist,name='add_to_watchlist'),
     path('removestock/<str:symbol>/', views.Removestock, name='removestock'),
+    path('recomendation/',views.generate_stock_recommendations,name='stocrecomedation')
 
    
 

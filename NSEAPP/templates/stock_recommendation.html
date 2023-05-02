@@ -8,6 +8,7 @@
 
 {% block body %}
     <div class="container"> 
+        <h1 class="text-center">Stock Recommdation </h1>
     
         <table class="table table-bordered mt-2">
 
@@ -22,14 +23,12 @@
                 <th class="h6 fw-bold">Change</th>
                 <th class="h6 fw-bold">Previous Close </th>
                 <th class="h6 fw-bold">volume</th>
-                <th class="h6 fw-bold">Prediction</th>
-                <th class="remove">Remove</th>
               </tr>
             </thead>
             <tbody>
             
             
-             {% for i in watch %}
+             {% for i in stock_data %}
               <tr>
                 <td id="symbol_id">{{i.symbol}}</td>
                 <td id="open">{{i.open}}</td>
@@ -39,10 +38,6 @@
                 <td class="{% if i.pChange > 0 %}green{% else %}red{% endif %}">{{ i.pChange }}%</td>
                 <td class="{% if i.change > 0 %}green{% else %}red{% endif %}">{{ i.change }}</td> <td id="previousclose">{{i.previousClose}}</td>
                 <td id="volume">{{i.totalTradedVolume}}</td>    
-                <td>{{i.prediction }}</td>
-                    
-                <td><a  href="{% url 'removestock' i.symbol %}"class="fa-sharp fa-solid fa-trash" ></a></td>
-
               </tr>
 
               {% endfor %} 

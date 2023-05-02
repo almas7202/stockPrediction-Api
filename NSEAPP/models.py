@@ -5,9 +5,7 @@ from nsetools import Nse
 nse = Nse()
 
 class Stock(models.Model):
-    # id = models.AutoField(primary_key=True)
     symbol = models.CharField(max_length=10)
-    # name = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.symbol}"
