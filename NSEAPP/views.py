@@ -27,8 +27,11 @@ def registerview(request):
         if form.is_valid():
             form.save()
             return redirect('/login/')
+        else:
+            form.add_error(None, 'Please Enter Valid Details.')
     else:
         form = UserCreateForm()
+        # form.add_error(None, 'Please Enter Valid.')
     return render(request, 'register.html', {'form': form})
 
 def login_view(request):
@@ -68,7 +71,7 @@ def marketview(request):
     #     print(stock_data)   
     # context = {'stock_data': stock_data}
     stocks=list(fnolist())
-    random_symbols = random.sample(stocks, 15)
+    random_symbols = random.sample(stocks, 20)
     stock_data = []
     for symbol in random_symbols:
         try:
@@ -180,10 +183,69 @@ def Removestock(request,symbol):
 def predict_price(symbol):
     data = pd.read_csv(f"{symbol}.csv")
     X = data[['CH_OPENING_PRICE', 'CH_LAST_TRADED_PRICE','CH_TOTAL_TRADES']]
-    y = data['CH_CLOSING_PRICE']
-    model = LinearRegression()
+    y = data['CH_CLOSING_PRICE']  # label Column
+    model = LinearRegression() #fit model
     model.fit(X, y)
     last_row = data.tail(1)
     prediction = model.predict(last_row[['CH_OPENING_PRICE', 'CH_LAST_TRADED_PRICE','CH_TOTAL_TRADES']])
     return prediction[0]
 
+# from nsepython import nse
+
+from django.shortcuts import render
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori, association_rules
+
+def generate_stock_recommendations(request):
+    # Step 1: Data Collection
+    # Get all stock symbols from the Watchlist model for different users
+    watchlist_data = Watchlist.objects.values_list('user', 'stock__symbol')
+    data = {}
+    for user_id, stock_symbol in watchlist_data:
+        if user_id not in data:
+            data[user_id] = []
+        data[user_id].append(stock_symbol)
+
+    data = list(data.values())
+    print(data)
+
+    # Step 2: Data Preprocessing
+    te = TransactionEncoder()
+    te_ary = te.fit(data).transform(data)
+    df = pd.DataFrame(te_ary, columns=te.columns_)
+
+    # Step 3: Implementing the Apriori Algorithm
+    frequent_itemsets = apriori(df, min_support=0.3, use_colnames=True)
+
+    # Step 4: Association Rule Mining
+    rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.5)
+    recommendations = []
+
+    # Step 5: Rule Evaluation and Recommendation Generation
+    for _, row in rules.iterrows():
+        antecedents = row['antecedents']
+        consequents = row['consequents']
+        if set(antecedents).issubset(data[0]) and consequents not in data[0]:
+            recommendations.extend(consequents)
+
+    # Step 6: Integration with Django
+    # Get stock symbols from the Stock model using the stock IDs in the recommendations
+    stock_symbols = Stock.objects.filter(symbol__in=recommendations).values_list('symbol', flat=True)
+    # recommendations = list(stock_symbols)
+    recommendations = list(set(stock_symbols))
+
+    #Formating of Recomdation System
+
+    stock_data = []
+    for symbol in recommendations:
+        try:
+            data = nsetools_get_quote(symbol)
+        except Exception as e:
+            print(f"Error fetching live data for symbol {symbol}: {e}")
+            continue    
+        stock_data.append(data)
+    print(stock_data) 
+    
+
+    context = {'stock_data': stock_data}
+    return render(request, 'stock_recommendation.html', context)

@@ -24,7 +24,7 @@
 <body>
   <header class="light-bb">
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" href="exchange-light.html"><img src="{% static 'assets/img/logo-dark.svg' %}" alt="logo"></a>
+      <a class="navbar-brand" href="/home/"><img src="{% static 'assets/img/logo-dark.svg' %}" alt="logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerMenu"
         aria-controls="headerMenu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="icon ion-md-menu"></i>
@@ -32,7 +32,7 @@
 
       <div class="collapse navbar-collapse" id="headerMenu">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               Landing Page
@@ -41,32 +41,45 @@
               <a class="dropdown-item" href="landing-page-light.html">Landing One</a>
               <a class="dropdown-item" href="landing-page-light-two.html">Landing Two</a>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               Exchange
             </a>
+            {% if  request.user.is_authenticated %}
+
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/marketview/">NSE Live Price</a>
               <a class="dropdown-item" href="/marketlight/">NSE Index</a>
-              <a class="dropdown-item" href="exchange-light-ticker.html">Exchange Ticker</a>
-              <a class="dropdown-item" href="exchange-light-fluid.html">Exchange Fluid</a>
+              <!-- <a class="dropdown-item" href="exchange-light-ticker.html">Exchange Ticker</a>
+              <a class="dropdown-item" href="exchange-light-fluid.html">Exchange Fluid</a> -->
             </div>
+            {% endif %}
+
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
-              Markets
+              Prediction
             </a>
+
+            
+            {% if  request.user.is_authenticated %}
+              
+            
+              
             <div class="dropdown-menu">
-              <!-- <a class="dropdown-item" href="markets-light.html">Markets</a> -->
-              <!-- <a class="dropdown-item" href="/marketlight/">NSE index</a> -->
-              <a class="dropdown-item" href="market-capital-bar-light.html">Markets Bar</a>
+              <!-- <a class="dropdown-item" href="markets-light.html">Prediction</a> -->
+              <a class="dropdown-item" href="/watchlist/">watchlist</a>
+              <a class="dropdown-item" href="/recomendation/">Recommdation</a>
+              <!-- <a class="dropdown-item" href="market-capital-bar-light.html">Markets Bar</a>
               <a class="dropdown-item" href="market-overview-light.html">Market Overview</a>
               <a class="dropdown-item" href="market-screener-light.html">Market Screener</a>
-              <a class="dropdown-item" href="market-crypto-light.html">Market Crypto</a>
+              <a class="dropdown-item" href="market-crypto-light.html">Market Crypto</a> -->
             </div>
+
+            {% endif %}
           </li>
 
           <li class="nav-item dropdown">
@@ -74,11 +87,19 @@
               aria-expanded="false">
               Dashboard
             </a>
+            
+          
+              
+              
             <div class="dropdown-menu">
+              {%  if request.user.is_authenticated  %}
               <a class="dropdown-item" href="/watchlist/">watchlist</a>
-              <a class="dropdown-item" href="settings-profile-light.html">Profile</a>
-              <a class="dropdown-item" href="settings-wallet-light.html">Wallet</a>
-              <a class="dropdown-item" href="settings-light.html">Settings</a>
+              
+              <!-- <a class="dropdown-item" href="settings-profile-light.html">Profile</a> -->
+              <!-- <a class="dropdown-item" href="settings-wallet-light.html">Wallet</a> -->
+              <!-- <a class="dropdown-item" href="settings-light.html">Settings</a> -->
+              {% else %}
+              {% endif %}
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -87,10 +108,10 @@
               Others
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="technical-analysis-light.html">Technical Analysis</a>
+              <!-- <a class="dropdown-item" href="technical-analysis-light.html">Technical Analysis</a>
               <a class="dropdown-item" href="cross-rates-light.html">Cross Rates</a>
               <a class="dropdown-item" href="symbol-info-light.html">Symbol Info</a>
-              <a class="dropdown-item" href="heat-map-light.html">Heat Map</a>
+              <a class="dropdown-item" href="heat-map-light.html">Heat Map</a> -->
               {%  if request.user.is_authenticated  %}
               <a class="dropdown-item" href="/logout/">logout</a>
               {% else %}
@@ -109,6 +130,7 @@
         
         <ul class="navbar-nav ml-auto">
           Welcome {{request.user}} 
+          <a href="/logout/" class="btn-2">Logout</a>
         </ul>
 
         {% else %}
